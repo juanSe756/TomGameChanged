@@ -37,13 +37,6 @@ class Menu extends Phaser.Scene {
             this.scale.height/2,
             'logo'
         ).setScale(2).setInteractive();
-        
-        this.pointsText = this.add.bitmapText(
-            this.scale.width/2,
-            this.scale.height - 100,
-            'pixelFont',
-            'PUNTOS ' + this.points
-        ).setDepth(2).setOrigin(0.5);
 
         this.bestPointsText = this.add.bitmapText(
             this.scale.width/2,

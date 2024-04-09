@@ -2,9 +2,14 @@ class GameOverScene extends Phaser.Scene {
     constructor() {
         super({ key: 'GameOverScene' });
     }
-    init() {
+    init(data) {
+        this.points = 0;
         console.log('Se ha iniciado la escena GameOverScene');
         this.scene.launch('UI');
+        if(Object.keys(data).length !== 0) {
+            this.points = data.points;
+        }
+
     }
 
     create() {
@@ -12,6 +17,14 @@ class GameOverScene extends Phaser.Scene {
         this.add.bitmapText(
             this.scale.width/2, this.scale.height/2,
             'pixelFont', 'GAME OVER').setOrigin(0.5);
+
+        this.pointsText = this.add.bitmapText(
+            this.scale.width/2,
+            this.scale.height - 300,
+            'pixelFont',
+            'PUNTOS ' + this.points,
+            10
+        ).setDepth(2).setOrigin(0.5);
             
         // Evento para reiniciar el juego
         this.input.on('pointerdown', (pointer) => {
